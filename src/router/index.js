@@ -24,8 +24,44 @@ import Layout from '@/layout'
   }
  */
 
-// 公共路由
+// region 公共路由
 export const constantRoutes = [
+  // {
+  //   path: '/quant',
+  //   component: Layout,
+  //   hidden: false,
+  //   meta: { title: 'quant', icon: 'dashboard' },
+  //   children: [
+  //     {
+  //       path: '/',
+  //       component: () => import('@/views/quant/okx/index.vue'),
+  //
+  //       name: 'Index',
+  //       meta: { title: 'quant', icon: 'dashboard' },
+  //
+  //     }
+  //   ]
+  // },
+  {
+    path: '/okx',
+    component: Layout,
+    name: 'okx',
+    meta: { title: 'okx', icon: 'dashboard' },
+    children: [
+      {
+        path: 'data-col',
+        component: () => import('@/views/quant/okx/data-collector/index.vue'),
+        name: 'DataCollector',
+        meta: { title: '数据采集', icon: 'user' }
+      },
+      {
+        path: 'analyse',
+        component: () => import('@/views/quant/okx/analyse/index.vue'),
+        name: 'Analyse',
+        meta: { title: '分析', icon: 'user' }
+      }
+    ]
+  },
   {
     path: '/redirect',
     component: Layout,
@@ -85,6 +121,7 @@ export const constantRoutes = [
     ]
   }
 ]
+// endregion
 
 // 动态路由，基于用户权限动态去加载
 export const dynamicRoutes = [
